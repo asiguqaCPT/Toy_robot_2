@@ -22,6 +22,10 @@ def on_off():
             print(' > ' + robot_name + ' moved forward by ' + str(move_forward()) + ' steps.')
             print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
             continue
+        elif 'back' in command.lower():
+            print(' > ' + robot_name + ' moved back by ' + str(move_back()) + ' steps.')
+            print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
+            continue
         elif command.lower() == 'off':
             print(robot_name + ': Shutting down..')
             break
@@ -36,6 +40,13 @@ def move_forward():
         return int(new_command[1])
     pass
 
+def move_back():
+    global y
+    if ' ' in command:
+        new_command = command.split(' ')
+        y -= int(new_command[1])
+        return int(new_command[1])
+
 def track_position():
     global x
     global y
@@ -46,6 +57,7 @@ def help_command():
     print('OFF  - Shut down robot')
     print('HELP - provide information about commands')
     print('FORWARD - move robot forward')
+    print('BACK - move robot backwards')
     print()
 
 def robot_start():
