@@ -3,6 +3,7 @@ x = 0
 y = 0
 robot_name =''
 command = ''
+direction = 0
 def provide_name():
     """Let's the child provide a name for the robot"""
     global robot_name
@@ -26,6 +27,11 @@ def on_off():
             print(' > ' + robot_name + ' moved back by ' + str(move_back()) + ' steps.')
             print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
             continue
+        elif 'right' in command.lower():
+            move_right()
+            print(' > ' + robot_name + ' turned right.')
+            print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
+            continue
         elif command.lower() == 'off':
             print(robot_name + ': Shutting down..')
             break
@@ -34,30 +40,53 @@ def on_off():
             continue
 def move_forward():
     global y
+    global x
     if ' ' in command:
         new_command = command.split(' ')
-        y += int(new_command[1])
+        if direction == 0:
+            y += int(new_command[1])
+        elif direction == 1:
+            x += int(new_command[1])
+        elif direction == 2:
+            y -= int(new_command[1])
+        elif direction == 3:
+            x -= int(new_command[1])
         return int(new_command[1])
-    pass
 
 def move_back():
     global y
+    global x
     if ' ' in command:
         new_command = command.split(' ')
-        y -= int(new_command[1])
+        if direction == 0:
+            y -= int(new_command[1])
+        elif direction == 1:
+            x -= int(new_command[1])
+        elif direction == 2:
+            y += int(new_command[1])
+        elif direction == 3:
+            x += int(new_command[1])
         return int(new_command[1])
+
+def move_right():
+    global direction
+    if direction < 3:
+        direction += 1
+    else:
+        direction = 0
 
 def track_position():
     global x
     global y
-
     return x,y
+
 def help_command():
     print('I can understand these commands:')
     print('OFF  - Shut down robot')
     print('HELP - provide information about commands')
     print('FORWARD - move robot forward')
     print('BACK - move robot backwards')
+    print('RIGHT - move robot right')
     print()
 
 def robot_start():
