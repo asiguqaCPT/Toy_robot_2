@@ -104,7 +104,7 @@ def move_back():
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
             else:
-                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                print(' > ' + robot_name + ' moved back by ' + new_command[1] + ' steps.')
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
         elif direction == 1:
@@ -115,7 +115,7 @@ def move_back():
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
             else:
-                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                print(' > ' + robot_name + ' moved back by ' + new_command[1] + ' steps.')
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
         elif direction == 2:
@@ -126,7 +126,7 @@ def move_back():
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
             else:
-                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                print(' > ' + robot_name + ' moved back by ' + new_command[1] + ' steps.')
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
         elif direction == 3:
@@ -137,7 +137,7 @@ def move_back():
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
             else:
-                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                print(' > ' + robot_name + ' moved back by ' + new_command[1] + ' steps.')
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
 
