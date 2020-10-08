@@ -25,6 +25,9 @@ def on_off():
         elif 'back' in command.lower():
             move_back()
             continue
+        elif 'sprint' in command.lower():
+            sprint()
+            continue
         elif 'right' in command.lower():
             move_right()
             print(' > ' + robot_name + ' turned right.')
@@ -141,6 +144,52 @@ def move_back():
                 print(' > ' + robot_name + ' now at position ' + str(track_position()).replace(' ','') + '.')
                 return
 
+def sprint(num):
+    
+
+def move_forward_2():
+    global y
+    global x
+    if ' ' in command:
+        new_command = command.split(' ')
+        if direction == 0:
+            y += int(new_command[1])
+            if y > 200 or y < -200:
+                y -= int(new_command[1])
+                print(robot_name + ': Sorry, I cannot go outside my safe zone.')
+                return
+            else:
+                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                return
+        elif direction == 1:
+            x += int(new_command[1])
+            if x > 100 or x < -100:
+                x -= int(new_command[1])
+                print(robot_name + ': Sorry, I cannot go outside my safe zone.')
+                return
+            else:
+                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                return
+        elif direction == 2:
+            y -= int(new_command[1])
+            if y > 200 or y < -200:
+                y += int(new_command[1])
+                print(robot_name + ': Sorry, I cannot go outside my safe zone.')
+                return
+            else:
+                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                return
+        elif direction == 3:
+            x -= int(new_command[1])
+            if x > 100 or x < -100:
+                x += int(new_command[1])
+                print(robot_name + ': Sorry, I cannot go outside my safe zone.')
+                return
+            else:
+                print(' > ' + robot_name + ' moved forward by ' + new_command[1] + ' steps.')
+                return
+
+    
 def move_right():
     global direction
     if direction < 3:
@@ -167,11 +216,20 @@ def help_command():
     print('FORWARD - move robot forward')
     print('BACK - move robot backwards')
     print('RIGHT - move robot right')
+    print('SPRINT - give robot extra speed')
     print()
 
 def robot_start():
     """This is the entry function, do not change"""
+    global x, y, robot_name, command, direction
+    x = 0
+    y = 0
+    robot_name =''
+    command = ''
+    direction = 0
+    
     provide_name()
     on_off()
+
 if __name__ == "__main__":
     robot_start()
